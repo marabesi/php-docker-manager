@@ -3,18 +3,28 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class GitController
+class GitController extends Controller
 {
 
     /**
-     * @Route("/git")
+     * @Route("/git/branches")
      */
-    public function indexAction()
+    public function branchesAction()
     {
-        return new Response(
-            ''
-        );
+        $branches = [
+            'SSD-19',
+            'SSD-20',
+            'SSD-40',
+            'SSD-51',
+            'HD-88891',
+            'HD-88892',
+            'HD-88893',
+        ];
+
+        return $this->render('git/branches.twig', [
+            'branches' => $branches
+        ]);
     }
 }

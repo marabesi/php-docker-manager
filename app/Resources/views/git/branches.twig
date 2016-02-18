@@ -1,0 +1,14 @@
+<table>
+    <thead>
+        <th>Branch</th>
+        <th></th>
+    </thead>
+    <tobdy>
+        {%  for branch in branches %}
+            <tr>
+                <td>{{ branch }}</td>
+                <td><a href="/docker/status/{{ branch }}">Deploy</a></td>
+            </tr>
+        {% endfor %}
+    </tobdy>
+</table>

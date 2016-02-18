@@ -1,0 +1,25 @@
+<table>
+    <thead>
+    <th>ID</th>
+    <th>Status</th>
+    <th>Port</th>
+    <th></th>
+    </thead>
+    <tobdy>
+        {%  for ps in dockerPs %}
+            <tr>
+                <td>{{ ps.id }}</td>
+                <td>{{ ps.status }}</td>
+                <td>{{ ps.port }}</td>
+                <td>
+                    <a href="/docker/remove/{{ ps.id }}">Remove</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tobdy>
+</table>
+
+Port <b>8689</b> is available would you like to set up branch {{ branch }} on it ?
+
+<button>Yes</button>
+<button>No</button>
