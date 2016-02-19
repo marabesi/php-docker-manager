@@ -1,0 +1,21 @@
+{
+  "name": "php-docker-manager",
+  "homepage": "https://github.com/marabesi/php-docker-manager",
+  "authors": [
+    "marabesi <matheus.marabesi@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "material-design-lite": "^1.1.1"
+  }
+}
