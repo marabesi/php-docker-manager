@@ -1,21 +1,24 @@
-
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-        <thead>
-        <tr>
-            <th class="mdl-data-table__cell--non-numeric">Material</th>
-            <th>Branch</th>
-        </tr>
-        </thead>
-        <tobdy>
-            {%  for branch in branches %}
+    <main class="mdl-card mdl-cell mdl-cell--12-col">
+        <div class="mdl-grid">
+            <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+                <thead>
                 <tr>
-                    <td class="mdl-data-table__cell--non-numeric">{{ branch }}</td>
-                    <td><a href="/docker/status/{{ branch }}">Deploy</a></td>
+                    <th class="mdl-data-table__cell--non-numeric">Material</th>
+                    <th>Branch</th>
                 </tr>
-            {% endfor %}
-        </tobdy>
-    </table>
+                </thead>
+                <tobdy>
+                    {% for branch in branches %}
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">{{ branch }}</td>
+                            <td><a href="/docker/status/{{ branch }}">Deploy</a></td>
+                        </tr>
+                    {% endfor %}
+                </tobdy>
+            </table>
+        </div>
+    </main>
 {% endblock %}

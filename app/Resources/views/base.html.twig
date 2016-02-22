@@ -17,17 +17,15 @@
             <header class="mdl-layout__header">
                 <div class="mdl-layout__header-row">
                     <!-- Title -->
-                    <span class="mdl-layout-title">Title</span>
+                    <span class="mdl-layout-title">Docker manager</span>
                 </div>
             </header>
             <div class="mdl-layout__drawer">
-                <span class="mdl-layout-title">Title</span>
+                {#<span class="mdl-layout-title">Title</span>#}
             </div>
-            <main class="mdl-card mdl-cell mdl-cell--12-col">
-                <div class="mdl-grid">
-                    {% block body %}{% endblock %}
-                </div>
-            </main>
+
+                {% block body %}{% endblock %}
+
         </div>
 
         {% block javascripts %}{% endblock %}

@@ -9,7 +9,7 @@ class GitController extends Controller
 {
 
     /**
-     * @Route("/git/branches")
+     * @Route("/")
      */
     public function branchesAction()
     {

@@ -1,25 +1,36 @@
-<table>
-    <thead>
-    <th>ID</th>
-    <th>Status</th>
-    <th>Port</th>
-    <th></th>
-    </thead>
-    <tobdy>
-        {%  for ps in dockerPs %}
-            <tr>
-                <td>{{ ps.id }}</td>
-                <td>{{ ps.status }}</td>
-                <td>{{ ps.port }}</td>
-                <td>
-                    <a href="/docker/remove/{{ ps.id }}">Remove</a>
-                </td>
-            </tr>
-        {% endfor %}
-    </tobdy>
-</table>
+{% extends 'base.html.twig' %}
 
-Port <b>8689</b> is available would you like to set up branch {{ branch }} on it ?
+{% block body %}
+    <main class="mdl-card mdl-cell mdl-cell--12-col">
+        <div class="mdl-grid">
+            <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+                <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Material</th>
+                    <th>Branch</th>
+                </tr>
+                </thead>
+                <tobdy>
+                    {% for ps in dockerPs %}
+                        <tr>
+                            <td class="mdl-data-table__cell--non-numeric">{{ ps.id }}</td>
+                            <td>{{ ps.status }}</td>
+                            <td>{{ ps.port }}</td>
+                            <td>
+                                <a href="/docker/remove/{{ ps.id }}">Remove</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tobdy>
+            </table>
 
-<button>Yes</button>
-<button>No</button>
+        </div>
+    </main>
+    <main class="mdl-card mdl-cell mdl-cell--12-col">
+        <div class="mdl-grid">
+            <a href="/" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                Branches
+            </a>
+        </div>
+    </main>
+{% endblock %}
