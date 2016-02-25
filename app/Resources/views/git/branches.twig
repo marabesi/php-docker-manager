@@ -3,6 +3,17 @@
 {% block body %}
     <main class="mdl-card mdl-cell mdl-cell--12-col">
         <div class="mdl-grid">
+            <form>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="sample1">
+                    <label class="mdl-textfield__label" for="sample1">Git repository</label>
+
+                </div>
+                <input type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect" value="List branches"/>
+            </form>
+        </div>
+        <div class="mdl-grid">
+
             <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
                 <thead>
                 <tr>
