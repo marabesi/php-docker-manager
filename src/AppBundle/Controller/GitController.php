@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
+use Symfony\Component\HttpFoundation\Request;
 
 class GitController extends Controller
 {
@@ -14,31 +15,32 @@ class GitController extends Controller
     /**
      * @Route("/")
      */
-    public function branchesAction()
+    public function branchesAction(Request $request)
     {
-        $kernel = $this->get('kernel');
+        $request = $request->createFromGlobals();
+        $branches = [];
 
-        $applicatoin = new Application($kernel);
-        $applicatoin->setAutoExit(false);
+        if ($request->isMethod('post')) {
+            $repo = $request->get('repository');
 
-        $git = new ArrayInput([
-            'command' => 'git:branch'
-        ]);
+            $kernel = $this->get('kernel');
 
-        $output = new BufferedOutput();
-        $applicatoin->run($git, $output);
+            $applicatoin = new Application($kernel);
+            $applicatoin->setAutoExit(false);
 
-        $content = $output->fetch();
+            $git = new ArrayInput([
+                'command' => 'git:branch',
+                'repository' => $repo
+            ]);
 
-        $branches = [
-            'SSD-19',
-            'SSD-20',
-            'SSD-40',
-            'SSD-51',
-            'HD-88891',
-            'HD-88892',
-            'HD-88893',
-        ];
+            $output = new BufferedOutput();
+            $applicatoin->run($git, $output);
+
+            $content = $output->fetch();
+
+            $service = $this->get('git.branch');
+            $branches = $service->find($content);
+        }
 
         return $this->render('git/branches.twig', [
             'branches' => $branches
