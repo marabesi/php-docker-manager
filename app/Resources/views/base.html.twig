@@ -24,8 +24,11 @@
                 {#<span class="mdl-layout-title">Title</span>#}
             </div>
 
+            <main class="mdl-layout__content mdl-color--grey-100">
+                <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
                 {% block body %}{% endblock %}
-
+                </div>
+            </main>
         </div>
 
         {% block javascripts %}{% endblock %}

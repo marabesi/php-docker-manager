@@ -19,6 +19,7 @@ class GitController extends Controller
     {
         $request = $request->createFromGlobals();
         $branches = [];
+        $repo = null;
 
         if ($request->isMethod('post')) {
             $repo = $request->get('repository');
@@ -40,6 +41,8 @@ class GitController extends Controller
 
             $service = $this->get('git.branch');
             $branches = $service->find($content);
+
+            $request->cookies->set('repository', $repo);
         }
 
         return $this->render('git/branches.twig', [
